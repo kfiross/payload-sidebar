@@ -52,7 +52,7 @@ export const getPluginOptions = (): PayloadSidebarPluginOptions => globalPluginO
  *
  * @example
  * ```ts
- * import { payloadSidebar } from '@kari/payload-sidebar/plugin'
+ * import { payloadSidebar } from 'payload-sidebar-plugin'
  *
  * export default buildConfig({
  *   plugins: [
@@ -79,8 +79,9 @@ export const payloadSidebar = (options: PayloadSidebarPluginOptions = {}) => {
     config.admin = config.admin || {}
     config.admin.components = config.admin.components || {}
 
-    // Set custom Nav component - server component path
-    config.admin.components.Nav = '@kari/payload-sidebar/components#CustomNav'
+    // Set custom Nav component using the bundled RSC export
+    // This follows Payload's pattern: 'package/rsc#ExportName'
+    config.admin.components.Nav = 'payload-sidebar-plugin/rsc#CustomNav'
 
     return config
   }

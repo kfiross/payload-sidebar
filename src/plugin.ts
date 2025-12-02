@@ -20,7 +20,7 @@ export const getPluginOptions = (): PayloadSidebarOptions => globalPluginOptions
  *
  * @example
  * ```ts
- * import { payloadSidebar } from '@kari/payload-sidebar'
+ * import { payloadSidebar } from 'payload-sidebar-plugin'
  *
  * export default buildConfig({
  *   plugins: [
@@ -49,7 +49,7 @@ export const payloadSidebar = (options: PayloadSidebarOptions = {}) => {
 
     // Set custom Nav component - use relative path from src/
     // Users need to create a re-export file at @/components/SidebarNav
-    // that exports CustomNav from '@kari/payload-sidebar/components'
+    // that exports CustomNav from 'payload-sidebar-plugin/components'
     config.admin.components.Nav = '@/components/SidebarNav'
 
     return config

@@ -7,13 +7,12 @@ import { EntityType, groupNavItems } from '@payloadcms/ui/shared'
 import { getTranslation } from '@payloadcms/translations'
 import React from 'react'
 
-import { NavClientWrapper } from './NavClientWrapper'
-import { NavContent } from './NavContent'
-import { NavConfigProvider } from '../NavContext'
+// Import client component using package path to ensure proper bundling
+// This path will be resolved by the consuming bundler (Next.js)
+import { CustomNavClient } from 'payload-sidebar-plugin/components'
 import { sortGroups } from '../../utils/sortGroups'
-import { DEFAULT_GROUP_ORDER, DEFAULT_ICONS, DEFAULT_BADGE_COLORS } from '../../defaults'
+import { DEFAULT_GROUP_ORDER, DEFAULT_BADGE_COLORS } from '../../defaults'
 import { getPluginOptions } from '../../plugin/index'
-import type { NavConfigContextValue } from '../../types'
 
 export type CustomNavProps = {
   req?: PayloadRequest
@@ -66,9 +65,6 @@ export async function CustomNav(props: CustomNavProps): Promise<React.ReactEleme
 
   // Merge plugin options with defaults
   const groupOrder = { ...DEFAULT_GROUP_ORDER, ...pluginOptions.groupOrder }
-  // Note: icons from plugin options are string paths, DEFAULT_ICONS are components
-  // For now, we only use DEFAULT_ICONS - icon customization via plugin needs different approach
-  const icons = DEFAULT_ICONS
   const classPrefix = pluginOptions.classPrefix ?? 'nav'
   const enablePinning = pluginOptions.enablePinning ?? true
   const pinnedStorage = pluginOptions.pinnedStorage ?? 'preferences'
@@ -109,7 +105,7 @@ export async function CustomNav(props: CustomNavProps): Promise<React.ReactEleme
     i18n,
   )
 
-  // Sort groups according to our priority
+  // Sort groups according to our priority - convert to serializable format
   const sortedGroups = sortGroups(
     groups.map((g) => ({
       label: g.label,
@@ -124,14 +120,12 @@ export async function CustomNav(props: CustomNavProps): Promise<React.ReactEleme
 
   const navPreferences = await getNavPrefs(req)
 
-  // Config for client components
-  const navConfig: NavConfigContextValue = {
-    icons,
+  // Serializable config for client components (no functions, no React components)
+  const navConfig = {
     classPrefix,
     enablePinning,
     pinnedStorage,
     cssVariables,
-    // onPinChange callback not supported via plugin config (needs client-side setup)
   }
 
   const LogoutComponent = RenderServerComponent({
@@ -153,61 +147,53 @@ export async function CustomNav(props: CustomNavProps): Promise<React.ReactEleme
     },
   })
 
+  const BeforeNavLinksComponent = RenderServerComponent({
+    clientProps: {
+      documentSubViewType,
+      viewType,
+    },
+    Component: beforeNavLinks,
+    importMap: payload.importMap,
+    serverProps: {
+      i18n,
+      locale,
+      params,
+      payload,
+      permissions,
+      searchParams,
+      user,
+    },
+  })
+
+  const AfterNavLinksComponent = RenderServerComponent({
+    clientProps: {
+      documentSubViewType,
+      viewType,
+    },
+    Component: afterNavLinks,
+    importMap: payload.importMap,
+    serverProps: {
+      i18n,
+      locale,
+      params,
+      payload,
+      permissions,
+      searchParams,
+      user,
+    },
+  })
+
   return (
-    <NavConfigProvider config={navConfig}>
-      <NavClientWrapper classPrefix={classPrefix}>
-        <nav className={`${classPrefix}__wrap`}>
-          {
-            RenderServerComponent({
-              clientProps: {
-                documentSubViewType,
-                viewType,
-              },
-              Component: beforeNavLinks,
-              importMap: payload.importMap,
-              serverProps: {
-                i18n,
-                locale,
-                params,
-                payload,
-                permissions,
-                searchParams,
-                user,
-              },
-            }) as React.ReactElement
-          }
-
-          {/* Navigation Content with Pinned Section */}
-          <NavContent
-            groups={sortedGroups}
-            adminRoute={adminRoute}
-            navPreferences={navPreferences}
-          />
-
-          {
-            RenderServerComponent({
-              clientProps: {
-                documentSubViewType,
-                viewType,
-              },
-              Component: afterNavLinks,
-              importMap: payload.importMap,
-              serverProps: {
-                i18n,
-                locale,
-                params,
-                payload,
-                permissions,
-                searchParams,
-                user,
-              },
-            }) as React.ReactElement
-          }
-
-          <div className={`${classPrefix}__controls`}>{LogoutComponent as React.ReactElement}</div>
-        </nav>
-      </NavClientWrapper>
-    </NavConfigProvider>
+    <CustomNavClient
+      classPrefix={classPrefix}
+      groups={sortedGroups}
+      adminRoute={adminRoute}
+      navPreferences={navPreferences}
+      navConfig={navConfig}
+      beforeNavLinks={BeforeNavLinksComponent as React.ReactElement}
+      afterNavLinks={AfterNavLinksComponent as React.ReactElement}
+      logoutComponent={LogoutComponent as React.ReactElement}
+    />
   )
 }
 

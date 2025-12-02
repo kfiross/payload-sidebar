@@ -1,31 +1,32 @@
 {
-  "name": "@kari/payload-sidebar",
+  "name": "payload-sidebar-plugin",
   "version": "1.0.0",
   "description": "Sortable navigation sidebar with pinning and multi-color badge support for Payload CMS 3.x",
   "author": "Kari",
   "license": "MIT",
-  "main": "./src/plugin/index.ts",
-  "types": "./src/plugin/index.ts",
+  "type": "module",
+  "main": "./dist/plugin/index.js",
+  "types": "./dist/plugin/index.d.ts",
   "exports": {
     ".": {
-      "types": "./src/plugin/index.ts",
-      "import": "./src/plugin/index.ts",
-      "require": "./src/plugin/index.ts"
+      "types": "./dist/plugin/index.d.ts",
+      "import": "./dist/plugin/index.js"
     },
     "./plugin": {
-      "types": "./src/plugin/index.ts",
-      "import": "./src/plugin/index.ts",
-      "require": "./src/plugin/index.ts"
+      "types": "./dist/plugin/index.d.ts",
+      "import": "./dist/plugin/index.js"
     },
     "./components": {
-      "types": "./src/components/index.ts",
-      "import": "./src/components/index.ts",
-      "require": "./src/components/index.ts"
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js"
+    },
+    "./rsc": {
+      "types": "./dist/rsc/index.d.ts",
+      "import": "./dist/rsc/index.js"
     },
     "./hooks": {
-      "types": "./src/hooks/index.ts",
-      "import": "./src/hooks/index.ts",
-      "require": "./src/hooks/index.ts"
+      "types": "./dist/hooks/index.d.ts",
+      "import": "./dist/hooks/index.js"
     }
   },
   "files": [
@@ -44,7 +45,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/tatsuyakari1203/karis-payload"
+    "url": "https://github.com/tatsuyakari1203/payload-sidebar"
   },
   "peerDependencies": {
     "@payloadcms/translations": "^3.0.0",
@@ -55,7 +56,14 @@
     "react": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
+    "@payloadcms/translations": "^3.0.0",
+    "@payloadcms/ui": "^3.0.0",
     "@types/react": "^18.3.0",
+    "esbuild-sass-plugin": "^3.3.1",
+    "lucide-react": ">=0.300.0",
+    "next": "^15.0.0",
+    "payload": "^3.0.0",
+    "react": "^19.0.0",
     "sass": "^1.83.0",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2"

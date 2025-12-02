@@ -17,7 +17,10 @@
     "isolatedModules": true,
     "noEmit": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "payload-sidebar-plugin/components": ["./src/components/index.ts"],
+      "payload-sidebar-plugin/hooks": ["./src/hooks/index.ts"],
+      "payload-sidebar-plugin/rsc": ["./src/server/index.ts"]
     }
   },
   "include": ["src/**/*"],

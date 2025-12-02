@@ -1,6 +1,6 @@
 // This is the main entry point - for plugin configuration only
-// For React components, import from '@kari/payload-sidebar/components'
-// For hooks, import from '@kari/payload-sidebar/hooks'
+// For React components, import from 'payload-sidebar-plugin/components'
+// For hooks, import from 'payload-sidebar-plugin/hooks'
 
 // Plugin
 export { payloadSidebar, payloadSidebar as default, getPluginOptions } from './plugin/index'
