@@ -34,7 +34,7 @@ export default defineConfig([
     external,
     esbuildPlugins: [
       sassPlugin({
-        type: 'style',
+        type: 'css-text',
       }),
     ],
     esbuildOptions(options) {
@@ -78,7 +78,7 @@ export default defineConfig([
     ],
     esbuildPlugins: [
       sassPlugin({
-        type: 'style',
+        type: 'css-text',
       }),
     ],
     esbuildOptions(options) {

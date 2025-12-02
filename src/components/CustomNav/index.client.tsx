@@ -3,7 +3,7 @@
 import { useNav } from '@payloadcms/ui'
 import React from 'react'
 
-import './styles.scss'
+import { StyleInjector } from './StyleInjector'
 import { NavContent } from './NavContent'
 import { NavConfigProvider } from '../NavContext'
 import { DEFAULT_ICONS } from '../../defaults'
@@ -60,6 +60,7 @@ export const CustomNavClient: React.FC<NavClientWrapperProps> = (props) => {
 
   return (
     <NavConfigProvider config={fullConfig}>
+      <StyleInjector />
       <aside
         className={[
           classPrefix,
