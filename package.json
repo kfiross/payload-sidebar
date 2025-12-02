@@ -1,0 +1,69 @@
+{
+  "name": "@kari/payload-sidebar",
+  "version": "1.0.0",
+  "description": "Sortable navigation sidebar with pinning and multi-color badge support for Payload CMS 3.x",
+  "author": "Kari",
+  "license": "MIT",
+  "main": "./src/plugin/index.ts",
+  "types": "./src/plugin/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/plugin/index.ts",
+      "import": "./src/plugin/index.ts",
+      "require": "./src/plugin/index.ts"
+    },
+    "./plugin": {
+      "types": "./src/plugin/index.ts",
+      "import": "./src/plugin/index.ts",
+      "require": "./src/plugin/index.ts"
+    },
+    "./components": {
+      "types": "./src/components/index.ts",
+      "import": "./src/components/index.ts",
+      "require": "./src/components/index.ts"
+    },
+    "./hooks": {
+      "types": "./src/hooks/index.ts",
+      "import": "./src/hooks/index.ts",
+      "require": "./src/hooks/index.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "payload",
+    "payloadcms",
+    "payload-plugin",
+    "navigation",
+    "sidebar",
+    "admin",
+    "sortable",
+    "pinning",
+    "badge"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tatsuyakari1203/karis-payload"
+  },
+  "peerDependencies": {
+    "@payloadcms/translations": "^3.0.0",
+    "@payloadcms/ui": "^3.0.0",
+    "lucide-react": ">=0.300.0",
+    "next": "^14.0.0 || ^15.0.0",
+    "payload": "^3.0.0",
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "sass": "^1.83.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm build"
+  }
+}
