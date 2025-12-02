@@ -184,7 +184,12 @@
       font-weight: 600;
       border-radius: 9px;
       flex-shrink: 0;
-      animation: badge-pulse 2s ease-in-out infinite;
+      // Crisp rendering
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
+      backface-visibility: hidden;
+      transform: translateZ(0); // Force GPU layer for crisp rendering
 
       // Default (red)
       background: var(--badge-red-bg);
@@ -219,19 +224,6 @@
       &--gray {
         background: var(--badge-gray-bg);
         color: var(--badge-gray-text);
-        animation: none; // No pulse for gray
-      }
-    }
-
-    @keyframes badge-pulse {
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 0.85;
-        transform: scale(1.05);
       }
     }
 
