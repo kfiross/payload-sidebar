@@ -3,6 +3,7 @@
 import React, { createContext, useContext } from 'react'
 import type { NavConfigContextValue, BadgeContextValue } from '../types'
 import { DEFAULT_ICONS, DEFAULT_BADGE_COLORS } from '../defaults'
+import type { IconComponent } from './DynamicIcon'
 
 // ============================================================================
 // Nav Config Context - for plugin configuration
@@ -37,6 +38,49 @@ export const NavConfigProvider: React.FC<{
   config: NavConfigContextValue
 }> = ({ children, config }) => {
   return <NavConfigContext.Provider value={config}>{children}</NavConfigContext.Provider>
+}
+
+// ============================================================================
+// Custom Icon Context - for extending icons beyond the default set
+// ============================================================================
+
+const CustomIconContext = createContext<Record<string, IconComponent>>({})
+
+/**
+ * Hook to access custom icons registered by the app
+ */
+export const useCustomIcons = (): Record<string, IconComponent> => {
+  return useContext(CustomIconContext)
+}
+
+/**
+ * Provider for custom icons beyond the default ~100 icons.
+ * Use this when you need Lucide icons that aren't in the pre-defined set.
+ *
+ * @example
+ * ```tsx
+ * import { Newspaper, Trophy, Gamepad2 } from 'lucide-react'
+ * import { SidebarIconProvider } from 'payload-sidebar-plugin/components'
+ *
+ * function MyIconProvider({ children }) {
+ *   const customIcons = {
+ *     'newspaper': Newspaper,
+ *     'trophy': Trophy,
+ *     'gamepad-2': Gamepad2,
+ *   }
+ *   return (
+ *     <SidebarIconProvider icons={customIcons}>
+ *       {children}
+ *     </SidebarIconProvider>
+ *   )
+ * }
+ * ```
+ */
+export const SidebarIconProvider: React.FC<{
+  children: React.ReactNode
+  icons: Record<string, IconComponent>
+}> = ({ children, icons }) => {
+  return <CustomIconContext.Provider value={icons}>{children}</CustomIconContext.Provider>
 }
 
 // ============================================================================
@@ -76,4 +120,4 @@ export const SidebarBadgeProvider: React.FC<{
 }
 
 // Export context for advanced use cases
-export { BadgeContext, NavConfigContext }
+export { BadgeContext, NavConfigContext, CustomIconContext }

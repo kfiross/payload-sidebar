@@ -5,7 +5,7 @@ import { Pin, X, ExternalLink } from 'lucide-react'
 import { DynamicIcon } from '../DynamicIcon'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useNavConfig } from '../NavContext'
+import { useNavConfig, useCustomIcons } from '../NavContext'
 import { useBadge, getBadgeColorClass } from '../../hooks/useBadge'
 import type { PinnedItem } from '../../types'
 
@@ -32,6 +32,7 @@ const PinnedItemLink: React.FC<{
 }> = ({ item, onUnpin, classPrefix, icons }) => {
   const pathname = usePathname()
   const badge = useBadge(item.slug)
+  const customIcons = useCustomIcons() // Get custom icons from context
 
   // Check if external link
   const isExternalLink = item.external ||
@@ -54,6 +55,7 @@ const PinnedItemLink: React.FC<{
     <>
       <DynamicIcon
         name={iconName}
+        customIcons={customIcons}
         className={`${classPrefix}__link-icon`}
         size={18}
       />

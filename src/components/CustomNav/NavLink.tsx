@@ -5,7 +5,7 @@ import Link from 'next/link'
 import React from 'react'
 import { Pin, Check, ExternalLink } from 'lucide-react'
 import { DynamicIcon } from '../DynamicIcon'
-import { useNavConfig } from '../NavContext'
+import { useNavConfig, useCustomIcons } from '../NavContext'
 import { useBadge, getBadgeColorClass } from '../../hooks/useBadge'
 
 interface NavLinkProps {
@@ -33,6 +33,7 @@ export const NavLink: React.FC<NavLinkProps> = ({
 }) => {
   const pathname = usePathname()
   const { icons, classPrefix, enablePinning } = useNavConfig()
+  const customIcons = useCustomIcons() // Get custom icons from context
   const badge = useBadge(slug || '')
 
   // Check if current path matches or starts with this link's href
@@ -57,6 +58,7 @@ export const NavLink: React.FC<NavLinkProps> = ({
     <>
       <DynamicIcon
         name={iconName}
+        customIcons={customIcons}
         className={`${classPrefix}__link-icon`}
         size={18}
       />

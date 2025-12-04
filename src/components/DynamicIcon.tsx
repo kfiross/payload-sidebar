@@ -320,18 +320,21 @@ const FallbackIcon: React.FC<LucideProps> = ({ size = 24, className }) => (
  * DynamicIcon - Renders icons by name from a pre-defined icon map.
  *
  * Uses a curated set of ~100 commonly used icons for admin interfaces.
- * Supports custom icons via the `customIcons` prop or context.
+ * Supports custom icons via the `customIcons` prop or SidebarIconProvider context.
  *
  * @example
  * // Using default icons
  * <DynamicIcon name="file" size={18} />
  * <DynamicIcon name="users-round" className="icon" />
  *
- * // With custom icons
+ * // With custom icons via prop
  * <DynamicIcon
  *   name="my-icon"
  *   customIcons={{ 'my-icon': MyIconComponent }}
  * />
+ *
+ * // With custom icons via SidebarIconProvider (recommended)
+ * // See SidebarIconProvider in NavContext.tsx
  */
 export const DynamicIcon = memo<DynamicIconProps>(function DynamicIcon({
   name,
@@ -339,7 +342,8 @@ export const DynamicIcon = memo<DynamicIconProps>(function DynamicIcon({
   fallback,
   ...props
 }) {
-  // Look up icon: custom icons first, then default map
+  // Look up icon: prop custom icons > default map
+  // Note: Context custom icons are looked up in NavLink/PinnedSection components
   const IconComponent = customIcons?.[name] || DEFAULT_ICON_MAP[name]
 
   if (!IconComponent) {

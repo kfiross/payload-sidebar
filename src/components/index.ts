@@ -5,12 +5,19 @@ export { NavContent } from './CustomNav/NavContent'
 export { NavLink } from './CustomNav/NavLink'
 export { PinnedSection } from './CustomNav/PinnedSection'
 
-// Context
+// Context & Providers
 export {
   NavConfigProvider,
   SidebarBadgeProvider,
+  SidebarIconProvider,
   useNavConfig,
   useBadgeContext,
+  useCustomIcons,
   NavConfigContext,
   BadgeContext,
+  CustomIconContext,
 } from './NavContext'
+
+// Icon utilities
+export { DynamicIcon, DEFAULT_ICON_MAP } from './DynamicIcon'
+export type { IconComponent, IconName } from './DynamicIcon'
