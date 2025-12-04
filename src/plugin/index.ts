@@ -1,5 +1,5 @@
 import type { Config } from 'payload'
-import type { CustomLink, CustomGroup, IconComponent } from '../types'
+import type { CustomLink, CustomGroup } from '../types'
 
 /**
  * Serializable custom link (icon as string key)
@@ -22,10 +22,23 @@ export interface PayloadSidebarPluginOptions {
    * Custom group order - map of group name to priority (lower = higher)
    */
   groupOrder?: Record<string, number>
+
   /**
-   * Custom icons for collections/globals
+   * Custom icons for collections/globals by slug
+   * Use Lucide icon names (kebab-case): 'shield-check', 'file-text', etc.
+   * Full list: https://lucide.dev/icons
+   *
+   * @example
+   * ```ts
+   * icons: {
+   *   users: 'users',
+   *   posts: 'file-text',
+   *   media: 'image',
+   *   'my-collection': 'shield-check',
+   * }
+   * ```
    */
-  icons?: Record<string, IconComponent>
+  icons?: Record<string, string>
 
   /**
    * Custom navigation links
@@ -79,6 +92,7 @@ export interface PayloadSidebarPluginOptions {
  */
 export interface SerializablePluginOptions {
   groupOrder?: Record<string, number>
+  icons?: Record<string, string>
   customLinks?: SerializableCustomLink[]
   customGroups?: CustomGroup[]
   enablePinning?: boolean
@@ -168,6 +182,7 @@ export const payloadSidebar = (options: PayloadSidebarPluginOptions = {}) => {
     // This allows RSC to access options via payload.config
     const serializableOptions: SerializablePluginOptions = {
       groupOrder: options.groupOrder,
+      icons: options.icons,
       customLinks: options.customLinks?.map(serializeCustomLink),
       customGroups: options.customGroups,
       enablePinning: options.enablePinning,

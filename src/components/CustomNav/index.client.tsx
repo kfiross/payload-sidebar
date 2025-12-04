@@ -20,6 +20,7 @@ interface SerializableNavConfig {
   pinnedStorage: 'preferences' | 'localStorage'
   cssVariables: Record<string, string>
   customLinks: CustomLink[]
+  icons?: Record<string, string>
 }
 
 interface NavClientWrapperProps {
@@ -50,9 +51,16 @@ export const CustomNavClient: React.FC<NavClientWrapperProps> = (props) => {
 
   const { hydrated, navOpen, navRef, shouldAnimate } = useNav()
 
-  // Build full config with icons (which can't be serialized from server)
+  // Merge default icons with user-provided icons
+  // User icons override defaults
+  const mergedIcons: Record<string, string> = {
+    ...DEFAULT_ICONS,
+    ...(navConfig.icons || {}),
+  }
+
+  // Build full config
   const fullConfig: NavConfigContextValue = {
-    icons: DEFAULT_ICONS,
+    icons: mergedIcons,
     classPrefix: navConfig.classPrefix,
     enablePinning: navConfig.enablePinning,
     pinnedStorage: navConfig.pinnedStorage,

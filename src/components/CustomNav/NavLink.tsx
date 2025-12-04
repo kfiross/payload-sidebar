@@ -3,10 +3,10 @@
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import React from 'react'
-import { Pin, Check, File, ExternalLink } from 'lucide-react'
+import { Pin, Check, ExternalLink } from 'lucide-react'
+import { DynamicIcon, type IconName } from 'lucide-react/dynamic'
 import { useNavConfig } from '../NavContext'
 import { useBadge, getBadgeColorClass } from '../../hooks/useBadge'
-import type { IconComponent } from '../../types'
 
 interface NavLinkProps {
   href: string
@@ -17,7 +17,7 @@ interface NavLinkProps {
   isPinned?: boolean
   onTogglePin?: () => void
   external?: boolean
-  customIcon?: string | IconComponent
+  customIcon?: string
 }
 
 export const NavLink: React.FC<NavLinkProps> = ({
@@ -39,20 +39,15 @@ export const NavLink: React.FC<NavLinkProps> = ({
   // For external links, never mark as active
   const isActive = !external && (pathname === href || pathname.startsWith(`${href}/`))
 
-  // Get icon: custom icon > icon from config > default File icon
+  // Get icon name: customIcon > icon from config > default 'file'
   const extractedSlug = slug || id.replace('nav-global-', '').replace('nav-custom-', '').replace('nav-', '')
 
-  let Icon: IconComponent = File
+  // Resolve icon name (kebab-case for lucide)
+  let iconName: string = 'file'
   if (customIcon) {
-    if (typeof customIcon === 'string') {
-      // Icon key from defaults
-      Icon = icons[customIcon] || icons[extractedSlug] || File
-    } else {
-      // Custom React component
-      Icon = customIcon
-    }
+    iconName = icons[customIcon] || customIcon
   } else {
-    Icon = icons[extractedSlug] || File
+    iconName = icons[extractedSlug] || 'file'
   }
 
   // For external links, show external indicator
@@ -60,7 +55,11 @@ export const NavLink: React.FC<NavLinkProps> = ({
 
   const linkContent = (
     <>
-      <Icon className={`${classPrefix}__link-icon`} size={18} />
+      <DynamicIcon
+        name={iconName as IconName}
+        className={`${classPrefix}__link-icon`}
+        size={18}
+      />
       {children}
       {isExternalLink && (
         <ExternalLink className={`${classPrefix}__link-external-icon`} size={12} />

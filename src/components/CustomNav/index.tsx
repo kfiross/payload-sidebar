@@ -224,6 +224,7 @@ export async function CustomNav(props: CustomNavProps): Promise<React.ReactEleme
   const cssVariables = { ...DEFAULT_BADGE_COLORS, ...pluginOptions.cssVariables }
   const customLinks = pluginOptions.customLinks ?? []
   const customGroups = pluginOptions.customGroups ?? []
+  const icons = pluginOptions.icons ?? {}
 
   const {
     admin: {
@@ -285,6 +286,7 @@ export async function CustomNav(props: CustomNavProps): Promise<React.ReactEleme
     pinnedStorage,
     cssVariables,
     customLinks,
+    icons,
   }
 
   const LogoutComponent = RenderServerComponent({

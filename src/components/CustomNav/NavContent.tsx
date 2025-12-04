@@ -60,7 +60,7 @@ export const NavContent: React.FC<NavContentProps> = ({ groups, adminRoute, navP
       label: string
       href: string
       external?: boolean
-      icon?: string | React.ComponentType<{ size?: number; className?: string }>
+      icon?: string
     }>
   }, [pinnedItems, groups, adminRoute])
 

@@ -124,15 +124,70 @@ payloadSidebar({
 
 ### Options Reference
 
-| Option          | Type                              | Default         | Description                                                      |
-| --------------- | --------------------------------- | --------------- | ---------------------------------------------------------------- |
-| `groupOrder`    | `Record<string, number>`          | `{}`            | Priority map for sorting nav groups. Lower numbers appear first. |
-| `customLinks`   | `CustomLink[]`                    | `[]`            | Add custom navigation links to the sidebar.                      |
-| `customGroups`  | `CustomGroup[]`                   | `[]`            | Define custom groups or configure existing ones.                 |
-| `enablePinning` | `boolean`                         | `true`          | Enable/disable the pin items feature.                            |
-| `pinnedStorage` | `'preferences' \| 'localStorage'` | `'preferences'` | Where to store pinned items.                                     |
-| `classPrefix`   | `string`                          | `'nav'`         | CSS class prefix for styling.                                    |
-| `cssVariables`  | `Record<string, string>`          | `{}`            | Override default CSS variables.                                  |
+| Option          | Type                              | Default         | Description                                                           |
+| --------------- | --------------------------------- | --------------- | --------------------------------------------------------------------- |
+| `groupOrder`    | `Record<string, number>`          | `{}`            | Priority map for sorting nav groups. Lower numbers appear first.      |
+| `icons`         | `Record<string, string>`          | `{}`            | Custom icons for collections/globals by slug. Uses Lucide icon names. |
+| `customLinks`   | `CustomLink[]`                    | `[]`            | Add custom navigation links to the sidebar.                           |
+| `customGroups`  | `CustomGroup[]`                   | `[]`            | Define custom groups or configure existing ones.                      |
+| `enablePinning` | `boolean`                         | `true`          | Enable/disable the pin items feature.                                 |
+| `pinnedStorage` | `'preferences' \| 'localStorage'` | `'preferences'` | Where to store pinned items.                                          |
+| `classPrefix`   | `string`                          | `'nav'`         | CSS class prefix for styling.                                         |
+| `cssVariables`  | `Record<string, string>`          | `{}`            | Override default CSS variables.                                       |
+
+---
+
+## 🎨 Custom Icons
+
+Customize icons for any collection, global, or custom link using [Lucide icon names](https://lucide.dev/icons).
+
+### Basic Usage
+
+```typescript
+payloadSidebar({
+  // Icons for collections and globals (by slug)
+  icons: {
+    // Override default icons
+    users: 'users-round',
+    posts: 'file-pen',
+    media: 'images',
+
+    // Custom collections
+    'my-collection': 'shield-check',
+    products: 'shopping-cart',
+    orders: 'package',
+    videos: 'video',
+  },
+})
+```
+
+### How It Works
+
+The plugin uses `lucide-react/dynamic` with `DynamicIcon` component internally, so you can use any icon name from the [Lucide Icons library](https://lucide.dev/icons).
+
+Icon names should be in **kebab-case**:
+
+- ✅ `'shield-check'`
+- ✅ `'file-text'`
+- ✅ `'arrow-right-left'`
+- ❌ `'ShieldCheck'` (PascalCase not supported)
+
+### Default Icons
+
+The plugin includes sensible defaults for common collections:
+
+| Slug         | Default Icon     |
+| ------------ | ---------------- |
+| `pages`      | `file-text`      |
+| `posts`      | `newspaper`      |
+| `media`      | `image`          |
+| `users`      | `users`          |
+| `categories` | `folder-open`    |
+| `settings`   | `settings`       |
+| `comments`   | `message-circle` |
+| `chats`      | `message-square` |
+
+You can override any of these with the `icons` option.
 
 ---
 
@@ -1001,7 +1056,15 @@ MIT © [Kari](https://github.com/tatsuyakari1203)
 
 ## 📝 Changelog
 
-### 1.2.0
+### 1.3.0
+
+- ✨ Added `icons` option - customize icons for any collection/global using Lucide icon names
+- ✨ Using `lucide-react/dynamic` with `DynamicIcon` for flexible icon rendering
+- ✨ Full TypeScript support for icon names
+- 🎯 Icons are now fully serializable (string-based instead of components)
+- 📝 Added Custom Icons documentation section
+
+### 1.2.x
 
 - ✨ Added `customLinks` option for custom navigation links
 - ✨ Added `customGroups` option for custom groups

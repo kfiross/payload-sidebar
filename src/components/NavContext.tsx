@@ -18,7 +18,7 @@ export const useNavConfig = (): NavConfigContextValue => {
   if (!ctx) {
     // Return defaults if no provider (for backwards compatibility)
     return {
-      icons: DEFAULT_ICONS,
+      icons: DEFAULT_ICONS, // Now returns Record<string, string>
       classPrefix: 'nav',
       enablePinning: true,
       pinnedStorage: 'preferences',

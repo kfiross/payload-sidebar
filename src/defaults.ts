@@ -1,56 +1,3 @@
-import {
-  FileText,
-  Image,
-  FolderOpen,
-  Users,
-  Settings,
-  MessageSquare,
-  Tag,
-  Award,
-  LayoutTemplate,
-  Palette,
-  Menu,
-  Bot,
-  Database,
-  BookOpen,
-  Contact,
-  StickyNote,
-  Wrench,
-  File,
-  BarChart3,
-  LayoutDashboard,
-  FileDown,
-  Building2,
-  MessageCircle,
-  ImagePlus,
-  MousePointerClick,
-  Newspaper,
-  Search,
-  ArrowRightLeft,
-  Send,
-  Target,
-  Briefcase,
-  Ticket,
-  Activity,
-  Heart,
-  ThumbsUp,
-  Link,
-  ExternalLink,
-  Globe,
-  Sparkles,
-  Zap,
-  Star,
-  Folder,
-  FileCode,
-  Terminal,
-  HelpCircle,
-  Info,
-  BookMarked,
-  Github,
-  Rocket,
-} from 'lucide-react'
-import type { IconComponent } from './types'
-
 // ============================================================================
 // Default Group Order
 // ============================================================================
@@ -86,110 +33,111 @@ export const DEFAULT_GROUP_ORDER: Record<string, number> = {
 }
 
 // ============================================================================
-// Default Icons
+// Default Icons (using Lucide icon names in kebab-case)
 // ============================================================================
 
 /**
- * Default icon mapping for common collections and globals
+ * Default icon name mapping for common collections and globals
+ * Uses Lucide icon names: https://lucide.dev/icons
  */
-export const DEFAULT_ICONS: Record<string, IconComponent> = {
+export const DEFAULT_ICONS: Record<string, string> = {
   // ===== DASHBOARD =====
-  dashboard: LayoutDashboard,
+  dashboard: 'layout-dashboard',
 
   // ===== COLLECTIONS =====
 
   // Content
-  pages: FileText,
-  posts: Newspaper,
-  media: Image,
-  files: File,
-  categories: FolderOpen,
-  tags: Tag,
-  badges: Award,
+  pages: 'file-text',
+  posts: 'newspaper',
+  media: 'image',
+  files: 'file',
+  categories: 'folder-open',
+  tags: 'tag',
+  badges: 'award',
 
   // Users
-  users: Users,
+  users: 'users',
 
   // Chat & Messages
-  chats: MessageSquare,
-  messages: Send,
-  'knowledge-base': BookOpen,
+  chats: 'message-square',
+  messages: 'send',
+  'knowledge-base': 'book-open',
 
   // Comments
-  comments: MessageCircle,
+  comments: 'message-circle',
 
   // CRM
-  contacts: Contact,
-  'contact-fields': Database,
-  'contact-notes': StickyNote,
-  leads: Target,
-  deals: Briefcase,
-  tickets: Ticket,
-  activities: Activity,
-  'customer-feedback': ThumbsUp,
-  'customer-interests': Heart,
+  contacts: 'contact',
+  'contact-fields': 'database',
+  'contact-notes': 'sticky-note',
+  leads: 'target',
+  deals: 'briefcase',
+  tickets: 'ticket',
+  activities: 'activity',
+  'customer-feedback': 'thumbs-up',
+  'customer-interests': 'heart',
 
   // ===== GLOBALS =====
 
   // Layout
-  header: Menu,
-  footer: LayoutTemplate,
+  header: 'menu',
+  footer: 'layout-template',
 
   // Analytics & Dashboard
-  'analytics-settings': BarChart3,
-  'chat-dashboard': LayoutDashboard,
-  'crm-dashboard': LayoutDashboard,
-  'comments-dashboard': LayoutDashboard,
+  'analytics-settings': 'bar-chart-3',
+  'chat-dashboard': 'layout-dashboard',
+  'crm-dashboard': 'layout-dashboard',
+  'comments-dashboard': 'layout-dashboard',
 
   // Settings
-  settings: Settings,
-  'chat-config': MessageSquare,
-  'ai-config': Bot,
-  'posts-page-settings': Newspaper,
+  settings: 'settings',
+  'chat-config': 'message-square',
+  'ai-config': 'bot',
+  'posts-page-settings': 'newspaper',
 
   // Appearance
-  'theme-settings': Palette,
+  'theme-settings': 'palette',
 
   // Tools
-  'wordpress-import': FileDown,
-  'company-info': Building2,
-  'image-optimizer': ImagePlus,
-  'floating-action-button': MousePointerClick,
+  'wordpress-import': 'file-down',
+  'company-info': 'building-2',
+  'image-optimizer': 'image-plus',
+  'floating-action-button': 'mouse-pointer-click',
 
   // Search & Navigation
-  search: Search,
-  redirects: ArrowRightLeft,
+  search: 'search',
+  redirects: 'arrow-right-left',
 
   // Form
-  'form-submissions': Database,
+  'form-submissions': 'database',
 
   // Advanced / Fallback
-  advanced: Wrench,
+  advanced: 'wrench',
 
   // ===== CUSTOM LINKS =====
   // Default icons for custom links
-  link: Link,
-  'external-link': ExternalLink,
-  external: ExternalLink,
-  globe: Globe,
-  sparkles: Sparkles,
-  zap: Zap,
-  star: Star,
-  folder: Folder,
-  'file-code': FileCode,
-  terminal: Terminal,
-  help: HelpCircle,
-  info: Info,
-  docs: BookMarked,
-  documentation: BookMarked,
-  api: Terminal,
-  custom: Sparkles,
+  link: 'link',
+  'external-link': 'external-link',
+  external: 'external-link',
+  globe: 'globe',
+  sparkles: 'sparkles',
+  zap: 'zap',
+  star: 'star',
+  folder: 'folder',
+  'file-code': 'file-code',
+  terminal: 'terminal',
+  help: 'help-circle',
+  info: 'info',
+  docs: 'book-marked',
+  documentation: 'book-marked',
+  api: 'terminal',
+  custom: 'sparkles',
 
   // Common social/dev icons
-  github: Github,
-  rocket: Rocket,
-  chart: BarChart3,
-  book: BookOpen,
+  github: 'github',
+  rocket: 'rocket',
+  chart: 'bar-chart-3',
+  book: 'book-open',
 }
 
 // ============================================================================

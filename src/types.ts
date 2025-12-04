@@ -143,8 +143,8 @@ export interface NavEntity {
   href?: string
   /** Whether link opens in new tab */
   external?: boolean
-  /** Icon key or component */
-  icon?: string | IconComponent
+  /** Icon name (Lucide kebab-case) */
+  icon?: string
   /** Whether this can be pinned */
   pinnable?: boolean
   /** Order within group */
@@ -273,7 +273,8 @@ export type BadgeContextValue = Record<string, BadgeValue>
  * Nav config context value passed to components
  */
 export interface NavConfigContextValue {
-  icons: Record<string, IconComponent>
+  /** Icon name mapping: slug -> lucide icon name (kebab-case) */
+  icons: Record<string, string>
   classPrefix: string
   enablePinning: boolean
   pinnedStorage: 'preferences' | 'localStorage'

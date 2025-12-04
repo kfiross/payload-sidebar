@@ -1,18 +1,19 @@
 'use client'
 
 import React from 'react'
-import { Pin, X, File, ExternalLink } from 'lucide-react'
+import { Pin, X, ExternalLink } from 'lucide-react'
+import { DynamicIcon, type IconName } from 'lucide-react/dynamic'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useNavConfig } from '../NavContext'
 import { useBadge, getBadgeColorClass } from '../../hooks/useBadge'
-import type { PinnedItem, IconComponent } from '../../types'
+import type { PinnedItem } from '../../types'
 
 interface PinnedNavItem extends PinnedItem {
   label: string
   href: string
   external?: boolean
-  icon?: string | IconComponent
+  icon?: string
 }
 
 interface PinnedSectionProps {
@@ -27,7 +28,7 @@ const PinnedItemLink: React.FC<{
   item: PinnedNavItem
   onUnpin: (slug: string, type: string) => void
   classPrefix: string
-  icons: Record<string, IconComponent>
+  icons: Record<string, string>
 }> = ({ item, onUnpin, classPrefix, icons }) => {
   const pathname = usePathname()
   const badge = useBadge(item.slug)
@@ -41,21 +42,21 @@ const PinnedItemLink: React.FC<{
   // Never mark external links as active
   const isActive = !isExternalLink && (pathname === item.href || pathname.startsWith(`${item.href}/`))
 
-  // Resolve icon
-  let Icon: IconComponent = File
+  // Resolve icon name
+  let iconName: string = 'file'
   if (item.icon) {
-    if (typeof item.icon === 'string') {
-      Icon = icons[item.icon] || icons[item.slug] || File
-    } else {
-      Icon = item.icon
-    }
+    iconName = icons[item.icon] || item.icon
   } else {
-    Icon = icons[item.slug] || File
+    iconName = icons[item.slug] || 'file'
   }
 
   const linkContent = (
     <>
-      <Icon className={`${classPrefix}__link-icon`} size={18} />
+      <DynamicIcon
+        name={iconName as IconName}
+        className={`${classPrefix}__link-icon`}
+        size={18}
+      />
       <span className={`${classPrefix}__link-label`}>{item.label}</span>
       {isExternalLink && (
         <ExternalLink className={`${classPrefix}__link-external-icon`} size={12} />
