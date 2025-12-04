@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Pin, X, ExternalLink } from 'lucide-react'
-import { DynamicIcon, type IconName } from 'lucide-react/dynamic'
+import { DynamicIcon } from '../DynamicIcon'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useNavConfig } from '../NavContext'
@@ -53,7 +53,7 @@ const PinnedItemLink: React.FC<{
   const linkContent = (
     <>
       <DynamicIcon
-        name={iconName as IconName}
+        name={iconName}
         className={`${classPrefix}__link-icon`}
         size={18}
       />

@@ -15,7 +15,7 @@ const external = [
   '@payloadcms/ui/shared',
   '@payloadcms/translations',
   'lucide-react',
-  'lucide-react/dynamic', // For DynamicIcon component
+  'lucide-react/dynamicIconImports', // For dynamic icon loading
 ]
 
 export default defineConfig([

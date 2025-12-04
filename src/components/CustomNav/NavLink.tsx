@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import React from 'react'
 import { Pin, Check, ExternalLink } from 'lucide-react'
-import { DynamicIcon, type IconName } from 'lucide-react/dynamic'
+import { DynamicIcon } from '../DynamicIcon'
 import { useNavConfig } from '../NavContext'
 import { useBadge, getBadgeColorClass } from '../../hooks/useBadge'
 
@@ -56,7 +56,7 @@ export const NavLink: React.FC<NavLinkProps> = ({
   const linkContent = (
     <>
       <DynamicIcon
-        name={iconName as IconName}
+        name={iconName}
         className={`${classPrefix}__link-icon`}
         size={18}
       />
