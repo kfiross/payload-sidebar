@@ -139,7 +139,7 @@ payloadSidebar({
 
 ## 🎨 Custom Icons
 
-Customize icons for any collection, global, or custom link using [Lucide icon names](https://lucide.dev/icons).
+The plugin uses a curated set of ~100 commonly used [Lucide icons](https://lucide.dev/icons) for admin interfaces. You can customize icons for any collection, global, or custom link.
 
 ### Basic Usage
 
@@ -163,31 +163,309 @@ payloadSidebar({
 
 ### How It Works
 
-The plugin uses `lucide-react/dynamic` with `DynamicIcon` component internally, so you can use any icon name from the [Lucide Icons library](https://lucide.dev/icons).
-
-Icon names should be in **kebab-case**:
+Icon names should be in **kebab-case** (lowercase with hyphens):
 
 - ✅ `'shield-check'`
 - ✅ `'file-text'`
 - ✅ `'arrow-right-left'`
 - ❌ `'ShieldCheck'` (PascalCase not supported)
 
+### Available Icons
+
+The plugin includes ~100 pre-defined icons organized by category:
+
+<details>
+<summary><strong>📄 Content & Files</strong></summary>
+
+| Icon Name      | Description      |
+| -------------- | ---------------- |
+| `file`         | Generic file     |
+| `file-text`    | Text document    |
+| `file-pen`     | Editable file    |
+| `files`        | Multiple files   |
+| `folder`       | Folder           |
+| `folder-tree`  | Folder hierarchy |
+| `folder-open`  | Open folder      |
+| `file-code`    | Code file        |
+| `file-archive` | Archive/zip file |
+| `book`         | Book             |
+| `book-open`    | Open book        |
+| `bookmark`     | Bookmark         |
+
+</details>
+
+<details>
+<summary><strong>👥 Users & People</strong></summary>
+
+| Icon Name     | Description    |
+| ------------- | -------------- |
+| `user`        | Single user    |
+| `users`       | Multiple users |
+| `users-round` | Round avatars  |
+| `user-round`  | Round avatar   |
+| `user-check`  | Verified user  |
+| `user-plus`   | Add user       |
+| `contact`     | Contact card   |
+
+</details>
+
+<details>
+<summary><strong>🖼️ Media</strong></summary>
+
+| Icon Name | Description |
+| --------- | ----------- |
+| `image`   | Image       |
+| `images`  | Gallery     |
+| `video`   | Video       |
+| `music`   | Audio       |
+| `camera`  | Camera      |
+
+</details>
+
+<details>
+<summary><strong>📐 Layout & Navigation</strong></summary>
+
+| Icon Name          | Description   |
+| ------------------ | ------------- |
+| `layout`           | Layout        |
+| `layout-dashboard` | Dashboard     |
+| `panel-top`        | Header panel  |
+| `panel-bottom`     | Footer panel  |
+| `panel-left`       | Left sidebar  |
+| `panel-right`      | Right sidebar |
+| `menu`             | Menu          |
+
+</details>
+
+<details>
+<summary><strong>💬 Communication</strong></summary>
+
+| Icon Name        | Description   |
+| ---------------- | ------------- |
+| `mail`           | Email         |
+| `mail-check`     | Verified mail |
+| `message-square` | Chat message  |
+| `message-circle` | Comment       |
+| `send`           | Send          |
+| `inbox`          | Inbox         |
+
+</details>
+
+<details>
+<summary><strong>🛒 E-commerce</strong></summary>
+
+| Icon Name       | Description   |
+| --------------- | ------------- |
+| `shopping-bag`  | Shopping bag  |
+| `shopping-cart` | Shopping cart |
+| `credit-card`   | Credit card   |
+| `dollar-sign`   | Currency      |
+| `receipt`       | Receipt       |
+| `package`       | Package       |
+
+</details>
+
+<details>
+<summary><strong>⚙️ Settings & System</strong></summary>
+
+| Icon Name      | Description     |
+| -------------- | --------------- |
+| `settings`     | Settings gear   |
+| `cog`          | Cog             |
+| `wrench`       | Wrench          |
+| `shield`       | Shield          |
+| `shield-check` | Verified shield |
+| `lock`         | Lock            |
+| `key`          | Key             |
+
+</details>
+
+<details>
+<summary><strong>📊 Charts & Data</strong></summary>
+
+| Icon Name     | Description       |
+| ------------- | ----------------- |
+| `bar-chart`   | Bar chart         |
+| `bar-chart-2` | Bar chart alt     |
+| `bar-chart-3` | Bar chart variant |
+| `chart`       | Chart (alias)     |
+| `line-chart`  | Line chart        |
+| `pie-chart`   | Pie chart         |
+| `activity`    | Activity graph    |
+
+</details>
+
+<details>
+<summary><strong>🔧 Development</strong></summary>
+
+| Icon Name   | Description   |
+| ----------- | ------------- |
+| `code`      | Code brackets |
+| `file-code` | Code file     |
+| `terminal`  | Terminal      |
+| `database`  | Database      |
+| `server`    | Server        |
+| `cpu`       | CPU           |
+
+</details>
+
+<details>
+<summary><strong>📋 Forms & Lists</strong></summary>
+
+| Icon Name         | Description    |
+| ----------------- | -------------- |
+| `clipboard-list`  | Checklist      |
+| `clipboard-check` | Completed list |
+| `form-input`      | Form input     |
+| `list-checks`     | Todo list      |
+
+</details>
+
+<details>
+<summary><strong>🔍 Search & Filter</strong></summary>
+
+| Icon Name            | Description |
+| -------------------- | ----------- |
+| `search`             | Search      |
+| `filter`             | Filter      |
+| `sliders-horizontal` | Sliders     |
+
+</details>
+
+<details>
+<summary><strong>🏢 Organization</strong></summary>
+
+| Icon Name    | Description |
+| ------------ | ----------- |
+| `building`   | Building    |
+| `building-2` | Office      |
+| `home`       | Home        |
+| `map`        | Map         |
+| `map-pin`    | Location    |
+| `globe`      | Globe       |
+
+</details>
+
+<details>
+<summary><strong>❤️ Social & Misc</strong></summary>
+
+| Icon Name   | Description |
+| ----------- | ----------- |
+| `heart`     | Heart       |
+| `star`      | Star        |
+| `thumbs-up` | Like        |
+| `share`     | Share       |
+| `share-2`   | Share alt   |
+| `tag`       | Tag         |
+| `tags`      | Tags        |
+| `hash`      | Hashtag     |
+| `zap`       | Lightning   |
+| `rocket`    | Rocket      |
+| `palette`   | Palette     |
+| `handshake` | Handshake   |
+| `award`     | Award       |
+| `crown`     | Crown       |
+| `gift`      | Gift        |
+| `sparkles`  | Sparkles    |
+| `lightbulb` | Idea        |
+| `github`    | GitHub      |
+
+</details>
+
+<details>
+<summary><strong>➡️ Arrows & Actions</strong></summary>
+
+| Icon Name         | Description   |
+| ----------------- | ------------- |
+| `arrow-left`      | Arrow left    |
+| `arrow-right`     | Arrow right   |
+| `arrow-up`        | Arrow up      |
+| `arrow-down`      | Arrow down    |
+| `corner-up-right` | Redirect      |
+| `external-link`   | External link |
+| `link`            | Link          |
+| `plus`            | Add           |
+| `minus`           | Remove        |
+| `edit`            | Edit          |
+| `trash`           | Delete        |
+| `trash-2`         | Delete alt    |
+| `save`            | Save          |
+| `download`        | Download      |
+| `upload`          | Upload        |
+| `check`           | Checkmark     |
+| `x`               | Close         |
+| `alert-circle`    | Alert         |
+| `info`            | Info          |
+| `help-circle`     | Help          |
+
+</details>
+
+<details>
+<summary><strong>📅 Calendar & Time</strong></summary>
+
+| Icon Name  | Description |
+| ---------- | ----------- |
+| `calendar` | Calendar    |
+| `clock`    | Clock       |
+| `timer`    | Timer       |
+
+</details>
+
 ### Default Icons
 
-The plugin includes sensible defaults for common collections:
+The plugin includes sensible defaults for common Payload collections:
 
-| Slug         | Default Icon     |
-| ------------ | ---------------- |
-| `pages`      | `file-text`      |
-| `posts`      | `newspaper`      |
-| `media`      | `image`          |
-| `users`      | `users`          |
-| `categories` | `folder-open`    |
-| `settings`   | `settings`       |
-| `comments`   | `message-circle` |
-| `chats`      | `message-square` |
+| Slug               | Default Icon      |
+| ------------------ | ----------------- |
+| `pages`            | `file-text`       |
+| `posts`            | `file-pen`        |
+| `media`            | `image`           |
+| `users`            | `users`           |
+| `categories`       | `folder-tree`     |
+| `settings`         | `settings`        |
+| `comments`         | `message-circle`  |
+| `forms`            | `clipboard-list`  |
+| `form-submissions` | `inbox`           |
+| `redirects`        | `corner-up-right` |
+| `search`           | `search`          |
 
 You can override any of these with the `icons` option.
+
+### Using Icons in Custom Links
+
+For custom links, use the `icon` property with any available icon name:
+
+```typescript
+payloadSidebar({
+  customLinks: [
+    {
+      label: 'Analytics',
+      href: '/admin/analytics',
+      group: 'Tools',
+      icon: 'bar-chart-3', // Use icon name string
+    },
+    {
+      label: 'GitHub',
+      href: 'https://github.com',
+      group: 'Resources',
+      icon: 'github',
+      external: true,
+    },
+  ],
+})
+```
+
+### Need More Icons?
+
+If you need an icon that's not in the pre-defined set, you have two options:
+
+**Option 1: Request Addition**
+
+Open an issue on the [GitHub repository](https://github.com/tatsuyakari1203/payload-sidebar) to request additional icons be added to the default set.
+
+**Option 2: Use Fallback**
+
+If an icon name is not found, the plugin will display a generic file icon as a fallback. This ensures your navigation always renders correctly.
 
 ---
 
@@ -1056,13 +1334,13 @@ MIT © [Kari](https://github.com/tatsuyakari1203)
 
 ## 📝 Changelog
 
-### 1.3.0
+### 1.3.3
 
-- ✨ Added `icons` option - customize icons for any collection/global using Lucide icon names
-- ✨ Using `lucide-react/dynamic` with `DynamicIcon` for flexible icon rendering
-- ✨ Full TypeScript support for icon names
-- 🎯 Icons are now fully serializable (string-based instead of components)
-- 📝 Added Custom Icons documentation section
+- ✨ Added `icons` option - customize icons for any collection/global
+- 🎯 Pre-defined set of ~100 commonly used Lucide icons for admin interfaces
+- 📦 Optimized bundle size - only includes necessary icons
+- 🔧 Icons are kebab-case strings for easy configuration
+- 📝 Added comprehensive Custom Icons documentation with all available icons
 
 ### 1.2.x
 

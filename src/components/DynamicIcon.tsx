@@ -318,19 +318,19 @@ const FallbackIcon: React.FC<LucideProps> = ({ size = 24, className }) => (
 
 /**
  * DynamicIcon - Renders icons by name from a pre-defined icon map.
- * 
+ *
  * Uses a curated set of ~100 commonly used icons for admin interfaces.
  * Supports custom icons via the `customIcons` prop or context.
- * 
+ *
  * @example
  * // Using default icons
  * <DynamicIcon name="file" size={18} />
  * <DynamicIcon name="users-round" className="icon" />
- * 
+ *
  * // With custom icons
- * <DynamicIcon 
- *   name="my-icon" 
- *   customIcons={{ 'my-icon': MyIconComponent }} 
+ * <DynamicIcon
+ *   name="my-icon"
+ *   customIcons={{ 'my-icon': MyIconComponent }}
  * />
  */
 export const DynamicIcon = memo<DynamicIconProps>(function DynamicIcon({
