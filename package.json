@@ -10,23 +10,28 @@
   "exports": {
     ".": {
       "types": "./dist/plugin/index.d.ts",
-      "import": "./dist/plugin/index.js"
+      "import": "./dist/plugin/index.js",
+      "require": "./dist/plugin/index.js"
     },
     "./plugin": {
       "types": "./dist/plugin/index.d.ts",
-      "import": "./dist/plugin/index.js"
+      "import": "./dist/plugin/index.js",
+      "require": "./dist/plugin/index.js"
     },
     "./components": {
       "types": "./dist/components/index.d.ts",
-      "import": "./dist/components/index.js"
+      "import": "./dist/components/index.js",
+      "require": "./dist/components/index.js"
     },
     "./rsc": {
       "types": "./dist/rsc/index.d.ts",
-      "import": "./dist/rsc/index.js"
+      "import": "./dist/rsc/index.js",
+      "require": "./dist/rsc/index.js"
     },
     "./hooks": {
       "types": "./dist/hooks/index.d.ts",
-      "import": "./dist/hooks/index.js"
+      "import": "./dist/hooks/index.js",
+      "require": "./dist/hooks/index.js"
     }
   },
   "files": [
